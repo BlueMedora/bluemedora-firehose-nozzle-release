@@ -1,0 +1,43 @@
+---
+name: bluemedora-firehose-nozzle
+templates:
+  bluemedora-firehose-nozzle-ctl.erb: bin/bluemedora-firehose-nozzle-ctl
+  bluemedora-firehose-nozzle.json.erb: config/bluemedora-firehose-nozzle.
+  bluemedora_logrotate.cron.erb: config/bluemedora_logrotate.cron
+  logrotate.conf.erb: config/logrotate.conf
+
+packages:
+- bluemedora-firehose-nozzle
+
+properties:
+  loggregator.traffic_controller_url:
+    description: "Traffic controller URL"
+  nozzle.disable_access_control:
+    description: "Nozzle bypasses authentication with the UAA"
+    default: false
+  nozzle.insecure_ssl_skip_verify:
+    description:  "Skip verifying SSL certificate"
+  nozzle.idle_timeout_seconds:
+    description: "Number of seconds to wait before timing out the read tot he firhose"
+    default: 60
+  nozzle.metric_cache_duration_seconds:
+    description: "The amount of time, in seconds, the RESTful API web server will cache metric data."
+    default: 60
+  nozzle.web_server_port:
+    description: "Port to connect to the RESTful API"
+    default: 8081
+  uaa.url:
+    description: "URL for the UAA server"
+  uaa.username:
+    description: "The user who has access to the loggregator firehose"
+  uaa.password:
+    description: "The password for the user"
+  bluemedora.logrotate.freq_min:
+    description: "The frequency in minutes which logrotate will rotate logs"
+    default: 5
+  bluemedora.logrotate.rotate:
+    description: "The number of files that logrotate will keep around on the VM"
+    default: 3
+  bluemedora.logrotate.size:
+    description: "THe size at which logrotate will decide to rotate the log file"
+    default: 50M

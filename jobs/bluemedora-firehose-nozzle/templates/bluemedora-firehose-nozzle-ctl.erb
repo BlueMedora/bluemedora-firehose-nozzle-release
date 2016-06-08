@@ -1,0 +1,39 @@
+#!/bin/bash -e
+
+RUN_DIR=/var/vcap/sys/run/bluemedora-firehose-nozzle
+LOG_DIR=/var/vcap/sys/log/bluemedora-firehose-nozzle
+PIDFILE=$RUN_DIR/bluemedora-firehose-nozzle.pid
+
+case $1 in
+
+start)
+
+mkdir -p $RUN_DIR
+mkdir -p $LOG_DIR
+
+chown -R vcap:vcap $LOG_DIR
+
+(crontab -l | sed /bluemedora.*logrotate/d; cat /var/vcap/jobs/bluemedora-firehose-nozzle/config/bluemedora_logrotate.cron) | sed /^$/d | crontab
+
+exec >>$LOG_DIR/bluemedora-firehose-nozzle.stdout.log \
+    2>>$LOG_DIR/bluemedora-firehose-nozzle.stderr.log
+
+chpst -u vcap:vcap /var/vcap/packages/bluemedora-firehose-nozzle/bluemedora-firehose-nozzle \
+--config /var/vcap/jobs/bluemedora-firehose-nozzle/config/bluemedora-firehose-nozzle.json &
+
+echo $! > $PIDFILE
+
+;;
+
+stop)
+kill -9 `cat $PIDFILE`
+rm -f $PIDFILE
+
+;;
+
+*)
+echo "Usage: bluemedora-firehose-nozzle {start|stop}"
+
+;;
+
+esac

@@ -1,0 +1,43 @@
+---
+meta:
+  environment: bluemedora-nozzle-lite
+  stemcell:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+    version: latest
+
+name: bluemedora-nozzle
+director_uuid: PLACEHOLDER-DIRECTOR-UUID
+
+compilation:
+  workers: 1
+  cloud_properties: {}
+
+networks:
+- name: bluemedora-firehose-nozzle-net
+  subnets:
+  - cloud_properties:
+      name: bluemedora-firehose-nozzle-net
+    range: 10.244.61.0/28
+    gateway: 10.244.61.1
+    static:
+    - 10.244.61.2 - 10.244.61.12
+
+jobs:
+- name: bluemedora-firehose-nozzle
+  instances: 1
+  networks:
+  - name: bluemedora-firehose-nozzle-net
+
+resource_pools:
+- name: bluemedora-firehose-nozzle
+  cloud_properties: {}
+
+properties:
+  loggregator:
+    traffic_controller_url: wss://doppler.bosh-lite.com:4443
+  uaa:
+    url: https://uaa.bosh-lite.com
+    username: bluemedora-firehose-nozzle
+    password: bluemedora-password
+  nozzle:
+    insecure_ssl_skip_verify: true

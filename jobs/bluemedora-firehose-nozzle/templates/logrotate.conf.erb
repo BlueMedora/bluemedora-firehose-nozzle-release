@@ -1,0 +1,9 @@
+
+/var/vcap/sys/log/bluemedora-firehose-nozzle/*.log {
+  missingok
+  rotate <%= p("bluemedora.logrotate.rotate") %>
+  compress
+  delaycompress
+  copytruncate
+  size=<%= p("bluemedora.logrotate.size") %>
+}
