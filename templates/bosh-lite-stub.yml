@@ -2,7 +2,7 @@
 meta:
   environment: bluemedora-nozzle-lite
   stemcell:
-    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+    name: PLACEHOLDER-STEM-CELL-NAME
     version: latest
 
 name: bluemedora-nozzle
@@ -10,7 +10,10 @@ director_uuid: PLACEHOLDER-DIRECTOR-UUID
 
 compilation:
   workers: 1
-  cloud_properties: {}
+  cloud_properties:
+    ram: PLACEHOLDER-RAM-IN-MB
+    disk: PLACEHOLDER-DISK-IN-MB
+    cpu: PLACEHOLDER-CPU-NUMBER
 
 networks:
 - name: bluemedora-firehose-nozzle-net
