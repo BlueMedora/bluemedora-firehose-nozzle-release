@@ -20,20 +20,33 @@ networks:
   subnets:
   - cloud_properties:
       name: bluemedora-firehose-nozzle-net
-    range: 10.244.61.0/28
+    range: 10.244.61.0/24
     gateway: 10.244.61.1
+    dns:
+    - 10.244.61.14
     static:
-    - 10.244.61.2 - 10.244.61.12
+    - 10.244.61.2-10.244.61.12
+    reserved:
+    - 10.244.61.0-10.244.61.1
+    - 10.244.61.13-10.244.61.255
 
 jobs:
 - name: bluemedora-firehose-nozzle
   instances: 1
   networks:
   - name: bluemedora-firehose-nozzle-net
+    bluemedora-firehose-nozzle-net:
+    - dns
+    - gateway
+    static_ips:
+    - 10.244.61.2-10.244.61.12
 
-resource_pools:
+resource_pools: bluemedora-firehose-nozzle
 - name: bluemedora-firehose-nozzle
-  cloud_properties: {}
+  cloud_properties: 
+    ram: PLACEHOLDER-RAM-IN-MB
+    disk: PLACEHOLDER-DISK-IN-MB
+    cpu: PLACEHOLDER-CPU-NUMBER
 
 properties:
   loggregator:
