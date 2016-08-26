@@ -41,7 +41,7 @@ jobs:
     static_ips:
     - 10.244.61.2-10.244.61.12
 
-resource_pools: bluemedora-firehose-nozzle
+resource_pools:
 - name: bluemedora-firehose-nozzle
   cloud_properties: 
     ram: PLACEHOLDER-RAM-IN-MB
