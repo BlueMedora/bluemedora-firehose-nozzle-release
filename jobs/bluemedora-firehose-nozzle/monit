@@ -1,5 +1,5 @@
 
-check process example-nozzle
+check process bluemedora-firehose-nozzle
   with pidfile /var/vcap/sys/run/bluemedora-firehose-nozzle/bluemedora-firehose-nozzle.pid
   start program "/var/vcap/jobs/bluemedora-firehose-nozzle/bin/bluemedora-firehose-nozzle-ctl start"
   stop program "/var/vcap/jobs/bluemedora-firehose-nozzle/bin/bluemedora-firehose-nozzle-ctl stop"

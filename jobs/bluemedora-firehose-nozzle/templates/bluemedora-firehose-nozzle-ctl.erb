@@ -18,8 +18,8 @@ chown -R vcap:vcap $LOG_DIR
 exec >>$LOG_DIR/bluemedora-firehose-nozzle.stdout.log \
     2>>$LOG_DIR/bluemedora-firehose-nozzle.stderr.log
 
-chpst -u vcap:vcap /var/vcap/packages/bluemedora-firehose-nozzle/bluemedora-firehose-nozzle \
---config /var/vcap/jobs/bluemedora-firehose-nozzle/config/bluemedora-firehose-nozzle.json &
+cd /var/vcap/jobs/bluemedora-firehose-nozzle
+chpst -u vcap:vcap /var/vcap/packages/bluemedora-firehose-nozzle/bluemedora-firehose-nozzle &
 
 echo $! > $PIDFILE
 

@@ -2,7 +2,7 @@
 name: bluemedora-firehose-nozzle
 templates:
   bluemedora-firehose-nozzle-ctl.erb: bin/bluemedora-firehose-nozzle-ctl
-  bluemedora-firehose-nozzle.json.erb: config/bluemedora-firehose-nozzle.
+  bluemedora-firehose-nozzle.json.erb: config/bluemedora-firehose-nozzle.json
   bluemedora_logrotate.cron.erb: config/bluemedora_logrotate.cron
   logrotate.conf.erb: config/logrotate.conf
 

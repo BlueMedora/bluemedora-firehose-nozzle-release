@@ -1,6 +1,6 @@
 ---
 final_name: bluemedora-firehose-nozzle
 blobstore:
-  provider: s3
+  provider: local
   options:
-    bucket_name: bluemedora-firehose-nozzle-blobs
+    blobstore_path: /tmp/bm_blobstore
