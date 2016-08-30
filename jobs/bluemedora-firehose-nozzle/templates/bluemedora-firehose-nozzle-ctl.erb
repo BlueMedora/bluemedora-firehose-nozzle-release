@@ -3,7 +3,10 @@
 RUN_DIR=/var/vcap/sys/run/bluemedora-firehose-nozzle
 LOG_DIR=/var/vcap/sys/log/bluemedora-firehose-nozzle
 LOCAL_LOG_DIR=/var/vcap/jobs/bluemedora-firehose-nozzle/logs
+CERT_DIR=/var/vcap/jobs/bluemedora-firehose-nozzle/certs
 PIDFILE=$RUN_DIR/bluemedora-firehose-nozzle.pid
+BM_HOSTNAME_CONTENT="$(hostname -f)"
+CERT_SUBJECT="/C=<%=p("cert.country")%>/ST=<%=p("cert.state")%>/L=<%=p("cert.locality")%>/O=<%=p("cert.organization")%>/CN=$BM_HOSTNAME_CONTENT"
 
 case $1 in
 
@@ -11,11 +14,15 @@ start)
 
 mkdir -p $RUN_DIR
 mkdir -p $LOG_DIR
+
 mkdir -p $LOCAL_LOG_DIR
 touch $LOCAL_LOG_DIR/bm_nozzle.log
 touch $LOCAL_LOG_DIR/bm_server.log
-
 chmod -R 777 $LOCAL_LOG_DIR
+
+mkdir -p $CERT_DIR
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout $CERT_DIR/key.pem -out $CERT_DIR/cert.pem -subj $CERT_SUBJECT
+chmod -R 744 $CERT_DIR
 
 chown -R vcap:vcap $LOG_DIR
 

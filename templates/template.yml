@@ -54,3 +54,8 @@ properties:
     idle_timeout_seconds: (( merge || nil ))
     metric_cache_duration_seconds: (( merge || nil ))
     web_server_port: (( merge || nil ))
+  cert:
+    country: PLACE_HOLDER
+    state: PLACE_HOLDER
+    locality: PLACE_HOLDER
+    organization: PLACE_HOLDER
