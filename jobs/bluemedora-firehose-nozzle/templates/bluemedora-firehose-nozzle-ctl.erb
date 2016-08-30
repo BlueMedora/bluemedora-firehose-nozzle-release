@@ -21,8 +21,8 @@ touch $LOCAL_LOG_DIR/bm_server.log
 chmod -R 777 $LOCAL_LOG_DIR
 
 mkdir -p $CERT_DIR
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout $CERT_DIR/key.pem -out $CERT_DIR/cert.pem -subj $CERT_SUBJECT
-chmod -R 744 $CERT_DIR
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout $CERT_DIR/key.pem -out $CERT_DIR/cert.pem -subj "$CERT_SUBJECT"
+chmod -R 777 $CERT_DIR
 
 chown -R vcap:vcap $LOG_DIR
 
