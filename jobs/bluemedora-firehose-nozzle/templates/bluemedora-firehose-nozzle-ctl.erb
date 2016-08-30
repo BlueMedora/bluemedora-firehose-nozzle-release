@@ -15,6 +15,8 @@ mkdir -p $LOCAL_LOG_DIR
 touch $LOCAL_LOG_DIR/bm_nozzle.log
 touch $LOCAL_LOG_DIR/bm_server.log
 
+chmod -R 777 $LOCAL_LOG_DIR
+
 chown -R vcap:vcap $LOG_DIR
 
 (crontab -l | sed /bluemedora.*logrotate/d; cat /var/vcap/jobs/bluemedora-firehose-nozzle/config/bluemedora_logrotate.cron) | sed /^$/d | crontab
