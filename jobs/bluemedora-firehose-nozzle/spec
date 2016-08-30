@@ -39,5 +39,13 @@ properties:
     description: "The number of files that logrotate will keep around on the VM"
     default: 3
   bluemedora.logrotate.size:
-    description: "THe size at which logrotate will decide to rotate the log file"
+    description: "The size at which logrotate will decide to rotate the log file"
     default: 50M
+  cert.country:
+    description: "The country which you are located in"
+  cert.state:
+    description: "The two letter state abbreviation"
+  cert.locality:
+    description: "The location/city you are in"
+  cert.organization:
+    description: "The organization/department of your company"
