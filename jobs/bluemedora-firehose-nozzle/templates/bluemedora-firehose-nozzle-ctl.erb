@@ -2,6 +2,7 @@
 
 RUN_DIR=/var/vcap/sys/run/bluemedora-firehose-nozzle
 LOG_DIR=/var/vcap/sys/log/bluemedora-firehose-nozzle
+LOCAL_LOG_DIR=/var/vcap/jobs/bluemedora-firehose-nozzle/logs
 PIDFILE=$RUN_DIR/bluemedora-firehose-nozzle.pid
 
 case $1 in
@@ -10,6 +11,9 @@ start)
 
 mkdir -p $RUN_DIR
 mkdir -p $LOG_DIR
+mkdir -p $LOCAL_LOG_DIR
+touch $LOCAL_LOG_DIR/bm_nozzle.log
+touch $LOCAL_LOG_DIR/bm_server.log
 
 chown -R vcap:vcap $LOG_DIR
 
