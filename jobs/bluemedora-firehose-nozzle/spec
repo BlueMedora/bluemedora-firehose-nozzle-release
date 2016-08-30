@@ -12,6 +12,8 @@ packages:
 properties:
   loggregator.traffic_controller_url:
     description: "Traffic controller URL"
+  loggregator.subscription_id:
+    description: "Subscription ID for the nozzle"
   nozzle.disable_access_control:
     description: "Nozzle bypasses authentication with the UAA"
     default: false
