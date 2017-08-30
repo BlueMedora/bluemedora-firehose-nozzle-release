@@ -5,7 +5,7 @@ mkdir -p ${BOSH_COMPILE_TARGET}/go/src
 cp -r github.com ${BOSH_COMPILE_TARGET}/go/src
 
 export GOPATH=$BOSH_COMPILE_TARGET/go
-export GOROOT=$(readlink -nf /var/vcap/packages/golang1.6)
+export GOROOT=$(readlink -nf /var/vcap/packages/golang1.8)
 echo GOROOT is $GOROOT
 export PATH=$GOROOT/bin:$PATH
 echo PATH is $PATH
