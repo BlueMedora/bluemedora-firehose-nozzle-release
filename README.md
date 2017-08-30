@@ -10,4 +10,4 @@ For information on setting up the bosh manifest see the [documentation page](htt
 
 ## Nozzle Configuration
 
- For information on how to configure the Blue Medora Firehose Nozzle refer [here](https://github.com/BlueMedora/bluemedora-firehose-nozzle#configuring-nozzle). 
+ For information on how to configure the Blue Medora Firehose Nozzle refer [here](https://github.com/BlueMedoraPublic/bluemedora-firehose-nozzle#configuring-nozzle). 
